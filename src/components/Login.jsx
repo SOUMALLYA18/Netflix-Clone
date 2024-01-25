@@ -27,7 +27,7 @@ const Login = () => {
     const nameValue = !isSignInform ? name.current?.value : null;
 
     const message = checkValidData(emailValue, passwordValue, nameValue);
-    console.log(message);
+
     setErrorMessage(message);
     if (message) return;
 

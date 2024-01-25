@@ -11,3 +11,8 @@
 body {
   overflow-x: hidden;
 }
+.movie-posters::-webkit-scrollbar {
+  display: none;
+}
+.Movie-card {
+}
