@@ -1,6 +1,8 @@
 import Login from "../components/Login";
 import Browse from "../components/Browse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import WatchPage from "./WatchPage";
+
 const Body = () => {
   const appRouter = createBrowserRouter([
     {
@@ -10,6 +12,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/movies/:id",
+      element: <WatchPage />,
     },
   ]);
   return (

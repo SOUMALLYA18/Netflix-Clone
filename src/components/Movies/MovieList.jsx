@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
-const MovieList = ({ title, movies, releaseDates }) => {
+const MovieList = ({ title, movies, name }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const moviePostersRef = useRef(null);
 
@@ -32,7 +32,7 @@ const MovieList = ({ title, movies, releaseDates }) => {
   return (
     <div className="px-4 text-white relative">
       <h1 className="md:text-2xl text-lg py-2 leading-tight">{title}</h1>
-      <div className="">
+      <div className="relative">
         <div
           ref={moviePostersRef}
           className="movie-posters flex overflow-x-scroll relative"
@@ -43,7 +43,8 @@ const MovieList = ({ title, movies, releaseDates }) => {
                 key={movie.id}
                 movieId={movie.id}
                 poster_path={movie.poster_path}
-                releaseDates={movie.release_date}
+                ratings={movie.vote_average}
+                name={movie.title}
               />
             ))}
           </div>
