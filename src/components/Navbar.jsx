@@ -4,7 +4,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/FireBase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -40,7 +40,31 @@ const Navbar = () => {
 
   return (
     <div className="absolute w-screen px-5 py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
-      <img className=" w-[30vw] md:w-44" src={LOGO} alt="NETFLIX-LOGO" />
+      <div className="flex items-center gap-6">
+        <img className=" w-[30vw] md:w-44" src={LOGO} alt="NETFLIX-LOGO" />
+        {user && (
+          <div className="link-wrapper text-center flex md:gap-5 md:text-[14px] gap-x-3.5 text-[3.5vw]">
+            <Link
+              to="/browse"
+              className="cursor-pointer text-white hover:text-opacity-50 font-[sans-serif] leading-tight transition-colors duration-300"
+            >
+              Movies
+            </Link>
+            <Link
+              to="/tvshowsbrowse"
+              className="cursor-pointer text-white hover:text-opacity-50 font-[sans-serif] leading-tight transition-colors duration-300"
+            >
+              TV Shows
+            </Link>
+            {/* <Link
+              to="/mywatchlist"
+              className="cursor-pointer text-white hover:text-opacity-50 font-[sans-serif] leading-tight transition-colors duration-300"
+            >
+              My List
+            </Link> */}
+          </div>
+        )}
+      </div>
       {user && (
         <div className="relative cursor-pointer" onClick={toggleDropdown}>
           <div className="flex items-center">

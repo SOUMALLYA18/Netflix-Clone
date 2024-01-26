@@ -6,10 +6,14 @@ import { MdVolumeOff } from "react-icons/md";
 import { useMute } from "../MuteContext";
 import { useState } from "react";
 import VideoBackGround from "./VideoBackground";
+import { IoAddSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const VideoTitle = ({ title, overview, movieId }) => {
   const { toggleMute, isMuted } = useMute();
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalmute, setModalmute] = useState(false);
+  const navigate = useNavigate();
 
   const openModal = () => {
     setModalVisible(true);
@@ -18,15 +22,18 @@ const VideoTitle = ({ title, overview, movieId }) => {
   const closeModal = () => {
     setModalVisible(false);
   };
+  const handleClick = () => {
+    navigate(`/movies/${movieId}`);
+  };
   return (
-    <div className="w-screen aspect-video px-4 md:px-14 py-[10vh] sm:py-[30vh] md:py-[40vh] absolute bg-gradient-to-r from-zinc-950 text-white overflow-hidden">
+    <div className="w-screen aspect-video px-4 md:px-14  py-[25vh] md:py-[50vh] absolute bg-gradient-to-r from-zinc-950 text-white overflow-hidden">
       <h1 className="text-sm md:text-3xl font-bold leading-tight  ">{title}</h1>
-      <p className="hidden md:inline-block font-sans py-3 md:w-1/3 leading-tight">
-        {overview}
-      </p>
       <div className="flex  md:flex-row items-center justify-between mt-[6vh] md:mt-0 ">
         <div className="flex  md:flex-row gap-2 py-4 md:py-6 items-center justify-between">
-          <button className="bg-white text-black md:py-3 py-1 px-2 md:px-7 text-lg md:text-2xl flex items-center gap-2 rounded-lg hover:bg-opacity-80">
+          <button
+            className="bg-white text-black md:py-3 py-1 px-2 md:px-7 text-lg md:text-2xl flex items-center gap-2 rounded-lg hover:bg-opacity-80"
+            onClick={handleClick}
+          >
             <FaPlay />
             Play
           </button>
@@ -47,17 +54,39 @@ const VideoTitle = ({ title, overview, movieId }) => {
                 background: "linear-gradient(0deg, #181818, transparent 50%)",
               }}
             >
-              <div className="bg-white  mx-auto rounded-lg w-[60vw] h-[90vh] relative">
+              <div className="bg-white  mx-auto rounded-lg w-[60vw] h-[90vh] relative flex items-center flex-col">
                 <button
                   className="absolute top-0 right-[1vw] bg-zinc-800 text-white p-1 mt-4 rounded-full"
                   onClick={closeModal}
                 >
                   <IoMdClose size={30} />
                 </button>
-                <div className="bg-zinc-900 w-full h-full overflow-hidden rounded-t-lg  ">
-                  <VideoBackGround className="object-cover w-full h-full" />
+                <div className="bg-zinc-900 w-full h-full overflow-hidden rounded-t-lg object-cover flex items-center justify-center ">
+                  <VideoBackGround />
                 </div>
-                <div></div>
+
+                <div className="bg-zinc-900 w-full h-[25vh] absolute z-20 bottom-0 flex flex-col   gap-2 p-4">
+                  <h1 className=" md:text-2xl font-bold leading-tight  ">
+                    {title}
+                  </h1>
+                  <div className="flex overflow-hidden object-contain ">
+                    <p className="hidden md:inline-block font-mono  leading-tight">
+                      {overview}
+                    </p>
+                  </div>
+                  <div className="flex gap-4">
+                    <button
+                      className="bg-white text-black  py-1 px-2  text-xl  flex items-center gap-2 rounded-lg hover:bg-opacity-80"
+                      onClick={handleClick}
+                    >
+                      <FaPlay size={20} />
+                      Play
+                    </button>
+                    <button className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
+                      <IoAddSharp size={30} />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           )}
