@@ -10,7 +10,7 @@ const VideoBackGround = ({ movieId }) => {
   return (
     <div>
       <iframe
-        className="w-full aspect-video"
+        className="w-screen aspect-video"
         src={
           tarilerVideo
             ? `https://www.youtube.com/embed/${tarilerVideo.key}?autoplay=1&${
