@@ -29,7 +29,7 @@ const Navbar = () => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-        navigate("/browse");
+       
       } else {
         dispatch(removeUser());
         navigate("/");
@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <div className="absolute w-screen px-5 py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
-      <div className="flex items-center gap-6">
+      <div className="flex md:items-center md:gap-6 flex-col md:flex-row ">
         <img className=" w-[30vw] md:w-44" src={LOGO} alt="NETFLIX-LOGO" />
         {user && (
           <div className="link-wrapper text-center flex md:gap-5 md:text-[14px] gap-x-3.5 text-[3.5vw]">
@@ -51,17 +51,11 @@ const Navbar = () => {
               Movies
             </Link>
             <Link
-              to="/tvshowsbrowse"
+              to="/tvshow"
               className="cursor-pointer text-white hover:text-opacity-50 font-[sans-serif] leading-tight transition-colors duration-300"
             >
               TV Shows
             </Link>
-            {/* <Link
-              to="/mywatchlist"
-              className="cursor-pointer text-white hover:text-opacity-50 font-[sans-serif] leading-tight transition-colors duration-300"
-            >
-              My List
-            </Link> */}
           </div>
         )}
       </div>
