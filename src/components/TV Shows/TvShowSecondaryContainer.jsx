@@ -11,6 +11,16 @@ const TvShowSecondaryContainer = () => {
           tvShows={tvShows.topRatedShow}
           name={tvShows.topRatedShow?.title}
         />
+        <TvShowList
+          title={"Latest Shows"}
+          tvShows={tvShows.latestTvShows}
+          name={tvShows.latestTvShows?.title}
+        />
+        <TvShowList
+          title={"Popular Shows"}
+          tvShows={tvShows.popularTvShows}
+          name={tvShows.popularTvShows?.title}
+        />
       </div>
     </div>
   );

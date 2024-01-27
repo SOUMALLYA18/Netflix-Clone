@@ -4,10 +4,13 @@ import Navbar from "./Navbar";
 import useTopratedTvShows from "../hooks/useTopratedTvShows";
 import TvShowMainContainer from "./TV Shows/TvShowMainContainer";
 import TvShowSecondaryContainer from "./TV Shows/TvShowSecondaryContainer";
+import useLatestTvShows from "../hooks/useLatestTvShows";
+import usePopularTvShows from "../hooks/usePopularTvShows";
 
 const TvShowBrowse = () => {
   useTopratedTvShows();
-
+  useLatestTvShows();
+  usePopularTvShows();
   const user = useSelector((store) => store.user);
   if (!user) {
     return <Navigate to="/" />;

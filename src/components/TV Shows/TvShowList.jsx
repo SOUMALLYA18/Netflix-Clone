@@ -21,15 +21,16 @@ const TvShowList = ({ title, tvShows }) => {
             className="tv-show-posters flex overflow-x-scroll relative"
           >
             <div className="flex">
-              {tvShows.map((tvShow) => (
-                <TVShowCard
-                  key={tvShow.id}
-                  tvShowId={tvShow.id}
-                  poster_path={tvShow.poster_path}
-                  ratings={tvShow.vote_average}
-                  name={tvShow.name}
-                />
-              ))}
+              {tvShows &&
+                tvShows.map((tvShow) => (
+                  <TVShowCard
+                    key={tvShow.id}
+                    tvShowId={tvShow.id}
+                    poster_path={tvShow.poster_path}
+                    ratings={tvShow.vote_average}
+                    name={tvShow.name}
+                  />
+                ))}
             </div>
           </div>
 

@@ -9,7 +9,7 @@ import { MdVolumeOff } from "react-icons/md";
 
 const TVShowCard = ({ poster_path, tvShowId, ratings, name }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false); // Local mute state
+  const [isMuted, setIsMuted] = useState(true);
   useTvTrailer(tvShowId);
   const trailer = useSelector(
     (store) => store.tvShows?.tvCardTrailer?.[tvShowId]

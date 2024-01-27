@@ -22,3 +22,5 @@ const useTrandingMovies = () => {
 };
 
 export default useTrandingMovies;
+
+// https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&adult=true&with_original_language=hi
