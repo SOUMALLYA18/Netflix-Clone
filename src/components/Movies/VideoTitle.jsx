@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const VideoTitle = ({ title, overview, movieId }) => {
   const { toggleMute, isMuted } = useMute();
   const [modalVisible, setModalVisible] = useState(false);
-  const [modalmute, setModalmute] = useState(false);
+
   const navigate = useNavigate();
 
   const openModal = () => {
@@ -54,7 +54,7 @@ const VideoTitle = ({ title, overview, movieId }) => {
                 background: "linear-gradient(0deg, #181818, transparent 50%)",
               }}
             >
-              <div className="bg-white  mx-auto rounded-lg w-[60vw] h-[90vh] relative flex items-center flex-col">
+              <div className=" mx-auto rounded-lg w-[60vw] h-[80vh] relative flex items-center flex-col">
                 <button
                   className="absolute top-0 right-[1vw] bg-zinc-800 text-white p-1 mt-4 rounded-full"
                   onClick={closeModal}
@@ -82,8 +82,8 @@ const VideoTitle = ({ title, overview, movieId }) => {
                       <FaPlay size={20} />
                       Play
                     </button>
-                    <button className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
-                      <IoAddSharp size={30} />
+                    <button className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-zinc-800 rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
+                      <IoAddSharp size={35} />
                     </button>
                   </div>
                 </div>

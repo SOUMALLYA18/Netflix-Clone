@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { BACKGROUND_IMG } from "../utils/Constants";
 
-import Navbar from "./Navbar";
+import Header from "./Header";
 import { checkValidData } from "../utils/Validate";
 import {
   createUserWithEmailAndPassword,
@@ -9,6 +9,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/FireBase";
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInform, setIsSignInform] = useState(true);
@@ -16,7 +19,7 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-
+  const dispatch = useDispatch();
   const toggleSignInForm = () => {
     setIsSignInform(!isSignInform);
   };
@@ -39,7 +42,12 @@ const Login = () => {
           updateProfile(user, {
             displayName: nameValue,
           })
-            .then(() => {})
+            .then(() => {
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+            })
             .catch((error) => {});
         })
         .catch((error) => {
@@ -70,7 +78,7 @@ const Login = () => {
 
   return (
     <div className="w-screen h-screen">
-      <Navbar />
+      <Header />
       <div className="absolute w-full h-full">
         <img
           src={BACKGROUND_IMG}

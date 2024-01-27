@@ -14,3 +14,6 @@ body {
 .movie-posters::-webkit-scrollbar {
   display: none;
 }
+.tv-show-posters::-webkit-scrollbar {
+  display: none;
+}

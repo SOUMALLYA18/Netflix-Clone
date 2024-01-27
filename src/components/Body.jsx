@@ -1,8 +1,8 @@
 import Login from "../components/Login";
 import Browse from "../components/Browse";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import WatchPage from "./WatchPage";
 import TvShowBrowse from "./TvShowBrowse";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -15,14 +15,15 @@ const Body = () => {
       element: <Browse />,
     },
     {
-      path: "/tvshow",
-      element: <TvShowBrowse />,
-    },
-    {
       path: "/movies/:id",
       element: <WatchPage />,
     },
+    {
+      path: "/tvshow",
+      element: <TvShowBrowse />,
+    },
   ]);
+
   return (
     <div className="w-screen h-screen">
       <RouterProvider router={appRouter} />

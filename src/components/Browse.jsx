@@ -6,6 +6,8 @@ import MainContainer from "./Movies/MainContainer";
 import SecondaryContainer from "./Movies/SecondaryContainer";
 import Navbar from "./Navbar";
 import useTrandingMovies from "../hooks/useTrandingMovies";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const Browse = () => {
   useNowPlayingMovies();
@@ -13,6 +15,10 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useTrandingMovies();
+  const user = useSelector((store) => store.user);
+  if (!user) {
+    return <Navigate to="/" />;
+  }
   return (
     <div className="w-screen h-screen">
       <Navbar />

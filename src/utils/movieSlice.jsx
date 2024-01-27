@@ -29,10 +29,10 @@ const movieSlice = createSlice({
       state.popularMovies = action.payload;
     },
     addTopRatedrMovies: (state, action) => {
-      state.topratedMovies = action.payload; // Corrected naming here
+      state.topratedMovies = action.payload; 
     },
     addTrandingMovies: (state, action) => {
-      state.trandingMovies = action.payload; // Corrected naming here
+      state.trandingMovies = action.payload; 
     },
   },
 });

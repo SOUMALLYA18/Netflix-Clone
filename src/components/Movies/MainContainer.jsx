@@ -6,7 +6,7 @@ import { MuteProvider } from "../MuteContext";
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   if (!movies) return;
-  const mainMovie = movies[9];
+  const mainMovie = movies[8];
 
   const { title, overview, id } = mainMovie;
   return (

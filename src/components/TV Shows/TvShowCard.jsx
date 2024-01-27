@@ -1,26 +1,18 @@
 import { IMG_CDN_URL } from "../../utils/Constants";
-import { useNavigate } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import { IoAddSharp } from "react-icons/io5";
-import useTrailer from "../../hooks/useTrailer";
+import useTvTrailer from "../../hooks/useTvTrailer";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { useMute } from "../MuteContext";
 import { FaVolumeOff } from "react-icons/fa6";
 import { MdVolumeOff } from "react-icons/md";
 
-const MovieCard = ({ poster_path, movieId, ratings, name }) => {
-  const navigate = useNavigate();
+const TVShowCard = ({ poster_path, tvShowId, ratings, name }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { toggleMute, isMuted } = useMute();
-
-  const handleClick = () => {
-    navigate(`/movies/${movieId}`);
-  };
-
-  useTrailer(movieId);
+  const [isMuted, setIsMuted] = useState(false); // Local mute state
+  useTvTrailer(tvShowId);
   const trailer = useSelector(
-    (store) => store.movies?.movieCardTrailer?.[movieId]
+    (store) => store.tvShows?.tvCardTrailer?.[tvShowId]
   );
 
   const handleMouseEnter = () => {
@@ -30,15 +22,19 @@ const MovieCard = ({ poster_path, movieId, ratings, name }) => {
   const handleMouseLeave = () => {
     setIsPlaying(false);
   };
+
+  const handleToggleMute = () => {
+    setIsMuted((prevMute) => !prevMute);
+  };
+
   return (
-    <div className=" w-28 md:w-48 pr-4 overflow-hidden  cursor-pointer group">
+    <div className="w-28 md:w-48 pr-4 overflow-hidden cursor-pointer group">
       <img
         src={
           poster_path ? `${IMG_CDN_URL}${poster_path}` : "fallback_image_url"
         }
-        alt="Movie Card"
-        className="Movie-card md:w-[15vw] md:h-[15vw] cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 "
-        onClick={handleClick}
+        alt="TV Show Card"
+        className="TVShow-card md:w-[15vw] md:h-[15vw] cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 "
       />
       <div
         className="flex items-center justify-center "
@@ -67,10 +63,7 @@ const MovieCard = ({ poster_path, movieId, ratings, name }) => {
           <div className="bg-zinc-900 p-3 lg:p-2 absolute w-full flex flex-col bottom-2 transition shadow-md gap-3 top-[30vh] ">
             <h3 className="text-white px ">{name}</h3>
             <div className="flex flex-row items-center gap-3  ">
-              <div
-                className="cursor-pointer w-4 h-4 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 "
-                onClick={handleClick}
-              >
+              <div className="cursor-pointer w-4 h-4 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
                 <FaPlay size={20} />
               </div>
               <div className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
@@ -79,7 +72,7 @@ const MovieCard = ({ poster_path, movieId, ratings, name }) => {
 
               <span className="px-2 md:px-0">
                 <button
-                  onClick={toggleMute}
+                  onClick={handleToggleMute}
                   className="text-white w-8 h-8 rounded-full bg-transparent border "
                 >
                   {isMuted ? (
@@ -103,4 +96,4 @@ const MovieCard = ({ poster_path, movieId, ratings, name }) => {
   );
 };
 
-export default MovieCard;
+export default TVShowCard;
