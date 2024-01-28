@@ -3,6 +3,7 @@ import Browse from "../components/Browse";
 import WatchPage from "./WatchPage";
 import TvShowBrowse from "./TvShowBrowse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import TvShowsWatchPAge from "./TvShowWatchPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -21,6 +22,10 @@ const Body = () => {
     {
       path: "/tvshow",
       element: <TvShowBrowse />,
+    },
+    {
+      path: "/tvshow/:id",
+      element: <TvShowsWatchPAge />,
     },
   ]);
 

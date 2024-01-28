@@ -8,6 +8,7 @@ const tvSlice = createSlice({
     tvCardTrailer: {},
     latestTvShows: null,
     popularTvShows: null,
+    tvShowWAtchPageTrailer: null,
   },
   reducers: {
     addTopRatedShow: (state, action) => {
@@ -26,6 +27,9 @@ const tvSlice = createSlice({
     addPopularTvShows: (state, action) => {
       state.popularTvShows = action.payload;
     },
+    addTvShowWatchPageTrailer: (state, action) => {
+      state.tvShowWAtchPageTrailer = action.payload;
+    },
   },
 });
 
@@ -35,6 +39,7 @@ export const {
   addTvCardTrailer,
   addLatestTvShows,
   addPopularTvShows,
+  addTvShowWatchPageTrailer,
 } = tvSlice.actions;
 
 export default tvSlice.reducer;

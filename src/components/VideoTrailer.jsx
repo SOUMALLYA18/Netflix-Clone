@@ -1,10 +1,9 @@
-import React from "react";
-import useMovieTrailer from "../hooks/useMovieTrailer";
 import { useSelector } from "react-redux";
+import useMovieWatchPageTrailer from "../hooks/useMovieWatchPageTrailer";
 
 const VideoTrailer = ({ movieId }) => {
-  useMovieTrailer(movieId);
-  const tarilerVideo = useSelector((store) => store.movies?.tarilerVideo);
+  useMovieWatchPageTrailer(movieId);
+  const tarilerVideo = useSelector((store) => store.movies?.watchPageTrailer);
   return (
     <div className=" ">
       <iframe

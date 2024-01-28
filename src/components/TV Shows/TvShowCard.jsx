@@ -6,14 +6,22 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { FaVolumeOff } from "react-icons/fa6";
 import { MdVolumeOff } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const TVShowCard = ({ poster_path, tvShowId, ratings, name }) => {
+  const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+
   useTvTrailer(tvShowId);
+
   const trailer = useSelector(
     (store) => store.tvShows?.tvCardTrailer?.[tvShowId]
   );
+
+  const handleClick = () => {
+    navigate(`/tvshow/${tvShowId}`);
+  };
 
   const handleMouseEnter = () => {
     setIsPlaying(true);
@@ -63,7 +71,10 @@ const TVShowCard = ({ poster_path, tvShowId, ratings, name }) => {
           <div className="bg-zinc-900 p-3 lg:p-2 absolute w-full flex flex-col bottom-2 transition shadow-md gap-3 top-[30vh] ">
             <h3 className="text-white px ">{name}</h3>
             <div className="flex flex-row items-center gap-3  ">
-              <div className="cursor-pointer w-4 h-4 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
+              <div
+                className="cursor-pointer w-4 h-4 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 "
+                onClick={handleClick}
+              >
                 <FaPlay size={20} />
               </div>
               <div className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">

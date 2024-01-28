@@ -5,7 +5,7 @@ import TvShowVideotitle from "./TvShowVideotitle";
 const TvShowMainContainer = () => {
   const tvShow = useSelector((store) => store.tvShows?.topRatedShow);
   if (!tvShow) return;
-  const mainTvShow = tvShow[18];
+  const mainTvShow = tvShow[1];
 
   const { name, overview, id } = mainTvShow;
 

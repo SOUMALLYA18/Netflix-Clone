@@ -6,8 +6,10 @@ import { GoInfo } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import TvShowVideobackGround from "./TvShowVideobackGround";
 import { MdVolumeOff } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const TvShowVideotitle = ({ name, overview, tvShowId }) => {
+  const navigate = useNavigate();
   const { toggleMute, isMuted } = useMute();
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
@@ -16,6 +18,10 @@ const TvShowVideotitle = ({ name, overview, tvShowId }) => {
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const handleClick = () => {
+    navigate(`/tvshow/${tvShowId}`);
   };
   return (
     <div>
@@ -28,7 +34,7 @@ const TvShowVideotitle = ({ name, overview, tvShowId }) => {
           <div className="flex  md:flex-row gap-2 py-4 md:py-6 items-center justify-between">
             <button
               className="bg-white text-black md:py-3 py-1 px-2 md:px-7 text-lg md:text-2xl flex items-center gap-2 rounded-lg hover:bg-opacity-80"
-              //   onClick={handleClick}
+              onClick={handleClick}
             >
               <FaPlay />
               Play
@@ -73,7 +79,7 @@ const TvShowVideotitle = ({ name, overview, tvShowId }) => {
                     <div className="flex gap-4">
                       <button
                         className="bg-white text-black  py-1 px-2  text-xl  flex items-center gap-2 rounded-lg hover:bg-opacity-80"
-                        // onClick={handleClick}
+                        onClick={handleClick}
                       >
                         <FaPlay size={20} />
                         Play
