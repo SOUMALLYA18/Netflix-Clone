@@ -55,8 +55,32 @@ const TVShowCard = ({ poster_path, tvShowId, ratings, name }) => {
           poster_path ? `${IMG_CDN_URL}${poster_path}` : "fallback_image_url"
         }
         alt="TV Show Card"
-        className="TVShow-card md:w-[15vw] md:h-[15vw] cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 "
+        className="TVShow-card lg:w-[15vw] lg:h-[15vw] cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 "
       />
+      <div className=" lg:hidden absolute  bottom-0 z-20 w-[23vw] h-8 flex items-center justify-between gap-3">
+        {" "}
+        <button
+          className="cursor-pointer px-3 py-2 md:px-6 md:py-1 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700"
+          onClick={handleClick}
+        >
+          <FaPlay size={15} />
+        </button>
+        {isInMyList ? (
+          <button
+            className="cursor-pointer px-3 py-1 md:px-6 md:py-1 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700"
+            onClick={handleAddtoList}
+          >
+            <FaCheckCircle size={20} />
+          </button>
+        ) : (
+          <button
+            className="cursor-pointer px-3 py-1 md:px-6 md:py-1 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700"
+            onClick={handleAddtoList}
+          >
+            <IoAddSharp size={20} />
+          </button>
+        )}
+      </div>
       <div
         className="flex items-center justify-center "
         onMouseEnter={handleMouseEnter}

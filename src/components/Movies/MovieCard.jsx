@@ -54,9 +54,32 @@ const MovieCard = ({ poster_path, movieId, ratings, name }) => {
           poster_path ? `${IMG_CDN_URL}${poster_path}` : "fallback_image_url"
         }
         alt="Movie Card"
-        className="Movie-card md:w-[15vw] md:h-[15vw] cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 "
-        onClick={handleClick}
+        className="Movie-card relative lg:w-[15vw] lg:h-[15vw] cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 "
       />
+      <div className=" lg:hidden absolute  bottom-0 z-20 w-[23vw] h-8 flex items-center justify-between gap-3">
+        {" "}
+        <button
+          className="cursor-pointer px-3 py-2 md:px-6 md:py-1 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700"
+          onClick={handleClick}
+        >
+          <FaPlay size={15} />
+        </button>
+        {isInMyList ? (
+          <button
+            className="cursor-pointer px-3 py-1 md:px-6 md:py-1 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700"
+            onClick={handleAddtoList}
+          >
+            <FaCheckCircle size={20} />
+          </button>
+        ) : (
+          <button
+            className="cursor-pointer px-3 py-1 md:px-6 md:py-1 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700"
+            onClick={handleAddtoList}
+          >
+            <IoAddSharp size={20} />
+          </button>
+        )}
+      </div>
       <div
         className="flex items-center justify-center "
         onMouseEnter={handleMouseEnter}
@@ -85,7 +108,7 @@ const MovieCard = ({ poster_path, movieId, ratings, name }) => {
             <h3 className="text-white px ">{name}</h3>
             <div className="flex flex-row items-center gap-3  ">
               <div
-                className="cursor-pointer w-4 h-4 lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 "
+                className="cursor-pointer w-4 h-4  lg:w-10 lg:h-10 bg-black rounded-full flex justify-center items-center transition hover:bg-neutral-700 "
                 onClick={handleClick}
               >
                 <FaPlay size={20} />

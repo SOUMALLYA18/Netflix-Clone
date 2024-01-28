@@ -11,7 +11,7 @@ const MainContainer = () => {
   const { title, overview, id, name, ratings, poster_path } = mainMovie;
   return (
     <MuteProvider>
-      <div className="w-screen  md:pt-0 pt-[25%] bg-black">
+      <div className="w-screen  lg:pt-0 pt-[30%] bg-black">
         <VideoTitle
           title={title}
           overview={overview}

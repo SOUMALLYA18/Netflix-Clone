@@ -10,7 +10,7 @@ const TvShowMainContainer = () => {
   const { name, overview, id, ratings, poster_path } = mainTvShow;
 
   return (
-    <div className="w-screen  md:pt-0 pt-[25%] bg-black">
+    <div className="w-screen  lg:pt-0 md:pt-[30%] pt-[25%] bg-black">
       <TvShowVideotitle
         name={name}
         overview={overview}

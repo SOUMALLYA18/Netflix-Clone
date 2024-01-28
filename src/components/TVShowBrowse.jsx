@@ -6,21 +6,39 @@ import TvShowMainContainer from "./TV Shows/TvShowMainContainer";
 import TvShowSecondaryContainer from "./TV Shows/TvShowSecondaryContainer";
 import useLatestTvShows from "../hooks/useLatestTvShows";
 import usePopularTvShows from "../hooks/usePopularTvShows";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const TvShowBrowse = () => {
+  const [dataLoaded, setDataLoaded] = useState(false);
   useTopratedTvShows();
   useLatestTvShows();
   usePopularTvShows();
   const user = useSelector((store) => store.user);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDataLoaded(true);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   if (!user) {
     return <Navigate to="/" />;
   }
 
   return (
-    <div>
+    <div className="w-screen h-screen">
       <Navbar />
-      <TvShowMainContainer />
-      <TvShowSecondaryContainer />
+      {!dataLoaded ? (
+        <Shimmer />
+      ) : (
+        <>
+          <TvShowMainContainer />
+          <TvShowSecondaryContainer />
+        </>
+      )}
     </div>
   );
 };
