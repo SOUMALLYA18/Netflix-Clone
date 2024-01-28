@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 import Body from "./components/Body";
 import appStore from "./utils/appStore";
 import { MuteProvider } from "./components/MuteContext";
+
 const App = () => {
   return (
     <div>

@@ -4,6 +4,7 @@ import WatchPage from "./WatchPage";
 import TvShowBrowse from "./TvShowBrowse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TvShowsWatchPAge from "./TvShowWatchPage";
+import MyList from "./MyList";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -26,6 +27,10 @@ const Body = () => {
     {
       path: "/tvshow/:id",
       element: <TvShowsWatchPAge />,
+    },
+    {
+      path: "/mylist",
+      element: <MyList />,
     },
   ]);
 

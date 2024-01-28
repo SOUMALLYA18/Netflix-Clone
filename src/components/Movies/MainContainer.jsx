@@ -8,11 +8,18 @@ const MainContainer = () => {
   if (!movies) return;
   const mainMovie = movies[8];
 
-  const { title, overview, id } = mainMovie;
+  const { title, overview, id, name, ratings, poster_path } = mainMovie;
   return (
     <MuteProvider>
       <div className="w-screen  md:pt-0 pt-[25%] bg-black">
-        <VideoTitle title={title} overview={overview} movieId={id} />
+        <VideoTitle
+          title={title}
+          overview={overview}
+          movieId={id}
+          name={name}
+          ratings={ratings}
+          poster_path={poster_path}
+        />
         <VideoBackground movieId={id} />
       </div>
     </MuteProvider>

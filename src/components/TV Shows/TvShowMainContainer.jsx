@@ -7,11 +7,17 @@ const TvShowMainContainer = () => {
   if (!tvShow) return;
   const mainTvShow = tvShow[1];
 
-  const { name, overview, id } = mainTvShow;
+  const { name, overview, id, ratings, poster_path } = mainTvShow;
 
   return (
     <div className="w-screen  md:pt-0 pt-[25%] bg-black">
-      <TvShowVideotitle name={name} overview={overview} tvShowId={id} />
+      <TvShowVideotitle
+        name={name}
+        overview={overview}
+        tvShowId={id}
+        ratings={ratings}
+        poster_path={poster_path}
+      />
       <TvShowVideobackGround tvShowId={id} />
     </div>
   );

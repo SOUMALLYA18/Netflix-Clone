@@ -54,6 +54,12 @@ const Navbar = () => {
           >
             TV Shows
           </Link>
+          <Link
+            to="/mylist"
+            className="cursor-pointer text-white hover:text-opacity-50 font-[sans-serif] leading-tight transition-colors duration-300"
+          >
+            My List
+          </Link>
         </div>
       </div>
       <div className="relative cursor-pointer" onClick={toggleDropdown}>

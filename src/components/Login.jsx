@@ -47,6 +47,11 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
+              localStorage.clear();
+
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
             })
             .catch((error) => {});
         })

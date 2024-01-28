@@ -1,19 +1,30 @@
-import { FaPlay } from "react-icons/fa";
+import { FaCheckCircle, FaPlay } from "react-icons/fa";
 import { GoInfo } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import { FaVolumeOff } from "react-icons/fa6";
 import { MdVolumeOff } from "react-icons/md";
 import { useMute } from "../MuteContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VideoBackGround from "./VideoBackground";
 import { IoAddSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../utils/MyListSlice";
 
-const VideoTitle = ({ title, overview, movieId }) => {
+const VideoTitle = ({
+  title,
+  overview,
+  movieId,
+  name,
+  ratings,
+  poster_path,
+}) => {
   const { toggleMute, isMuted } = useMute();
   const [modalVisible, setModalVisible] = useState(false);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isInMyList, setIsInMyList] = useState(false);
+  const myListItems = useSelector((store) => store.mylist?.items);
 
   const openModal = () => {
     setModalVisible(true);
@@ -25,6 +36,15 @@ const VideoTitle = ({ title, overview, movieId }) => {
   const handleClick = () => {
     navigate(`/movies/${movieId}`);
   };
+  const handleAddtoList = () => {
+    if (!isInMyList) {
+      dispatch(addItem({ id: movieId, name, ratings, poster_path }));
+    }
+  };
+  useEffect(() => {
+    const isInList = myListItems.some((item) => item.id === movieId);
+    setIsInMyList(isInList);
+  }, [movieId, myListItems]);
   return (
     <div className="w-screen aspect-video px-4 md:px-14  py-[25vh] md:py-[50vh] absolute bg-gradient-to-r from-zinc-950 text-white overflow-hidden">
       <h1 className="text-sm md:text-3xl font-bold leading-tight  ">{title}</h1>
@@ -82,9 +102,21 @@ const VideoTitle = ({ title, overview, movieId }) => {
                       <FaPlay size={20} />
                       Play
                     </button>
-                    <button className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-zinc-800 rounded-full flex justify-center items-center transition hover:bg-neutral-700 ">
-                      <IoAddSharp size={35} />
-                    </button>
+                    {isInMyList ? (
+                      <button
+                        className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-zinc-800 rounded-full flex justify-center items-center transition hover:bg-neutral-700 "
+                        onClick={handleAddtoList}
+                      >
+                        <FaCheckCircle size={35} />
+                      </button>
+                    ) : (
+                      <button
+                        className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-zinc-800 rounded-full flex justify-center items-center transition hover:bg-neutral-700 "
+                        onClick={handleAddtoList}
+                      >
+                        <IoAddSharp size={35} />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
