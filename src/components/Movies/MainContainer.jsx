@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import VideoTitle from "../Movies/VideoTitle";
 import { MuteProvider } from "../MuteContext";
-import VideoBackGround from "./VideoBackground";
+import VideoBackGround from "./VideoBackGround";
 
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);

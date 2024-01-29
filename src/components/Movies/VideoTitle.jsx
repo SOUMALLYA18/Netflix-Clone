@@ -5,7 +5,7 @@ import { FaVolumeOff } from "react-icons/fa6";
 import { MdVolumeOff } from "react-icons/md";
 import { useMute } from "../MuteContext";
 import { useEffect, useState } from "react";
-import VideoBackGround from "./VideoBackground";
+import VideoBackGround from "./VideoBackGround";
 import { IoAddSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
