@@ -36,9 +36,17 @@ const MyList = () => {
             {myListItems.map(({ id, type, ...otherProps }) => (
               <div key={id}>
                 {type === "tvShow" ? (
-                  <TVShowCard {...otherProps} tvShowId={id} />
+                  <TVShowCard
+                    {...otherProps}
+                    tvShowId={id}
+                    removeFromMyList={() => removeFromMyList(id)}
+                  />
                 ) : (
-                  <MovieCard {...otherProps} movieId={id} />
+                  <MovieCard
+                    {...otherProps}
+                    movieIdId={id}
+                    removeFromMyList={() => removeFromMyList(id)}
+                  />
                 )}
               </div>
             ))}
