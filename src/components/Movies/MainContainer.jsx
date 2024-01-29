@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
-import VideoBackground from "../Movies/VideoBackground";
+
 import VideoTitle from "../Movies/VideoTitle";
 import { MuteProvider } from "../MuteContext";
+import VideoBackGround from "./VideoBackground";
 
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
@@ -20,7 +21,7 @@ const MainContainer = () => {
           ratings={ratings}
           poster_path={poster_path}
         />
-        <VideoBackground movieId={id} />
+        <VideoBackGround movieId={id} />
       </div>
     </MuteProvider>
   );
