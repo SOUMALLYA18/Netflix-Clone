@@ -9,7 +9,7 @@ import usePopularTvShows from "../hooks/usePopularTvShows";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
-const TvShowBrowse = () => {
+const TvBrowse = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
   useTopratedTvShows();
   useLatestTvShows();
@@ -43,4 +43,4 @@ const TvShowBrowse = () => {
   );
 };
 
-export default TvShowBrowse;
+export default TvBrowse;
