@@ -5,7 +5,7 @@ import WatchPage from "./WatchPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TvShowsWatchPAge from "./TvShowWatchPage";
 import MyList from "./MyList";
-import TvShowBrowse from "./TvShowBrowse";
+import TvShowBrowse from "../components/TvShowBrowse";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
