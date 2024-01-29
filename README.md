@@ -36,7 +36,9 @@
 - tvShow watch page implemented
 - fixed a bug
 - Mute & Unmute button added
-
+- MyList page added 
+- Add any tvshow or movie on it
+- Finally done with Netflix-Clone
 # npm create vite@latest
 
 # Tailwind Css
@@ -52,7 +54,7 @@
   - Title & Description
   - MovieSuggestions
     - MovieLists \* N
-
-- NetflixGPT
-  - Search Bar
-  - Movie Suggestions Given by GPT api
+  - TvSHowSuggestions
+    -TvShowList \* N
+  - MyList Page 
+    -Add any movie or tv show and delete anytime  
