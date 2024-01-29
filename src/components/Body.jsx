@@ -1,10 +1,11 @@
 import Login from "../components/Login";
 import Browse from "../components/Browse";
 import WatchPage from "./WatchPage";
-import TvShowBrowse from "./TvShowBrowse";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TvShowsWatchPAge from "./TvShowWatchPage";
 import MyList from "./MyList";
+import TvShowBrowse from "./TvShowBrowse";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
